@@ -1,0 +1,17 @@
+# Lixo de sincronização do Google Drive
+.fuse_hidden*
+
+# Config local do Claude Code
+.claude/settings.local.json
+
+# Rascunhos de construção do site
+_ref_index.html
+impulsione_head.part
+impulsione_body.part
+
+# Material-fonte (não faz parte do site publicado; backup fica no Google Drive)
+*.pdf
+*.txt
+*.jpg
+*.jpeg
+*.png
