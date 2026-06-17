@@ -5392,7 +5392,21 @@
 <script>
   /* >>> TROQUE pelo número real (formato: 55 + DDD + número, só dígitos) <<< */
   var WHATS = '5582981745095';
+  var SHEET_URL = 'https://script.google.com/macros/s/AKfycbxHEEcdcYFcNR-B8gfcTcFil88gQXEkhvH7xiluEzuRcuDUIeGlvYC3-OyToVqrJV7E/exec';
   var leadOrigem = 'site';
+
+  /* Grava o lead na Planilha Google (Apps Script) — fire-and-forget, sem travar o WhatsApp */
+  function sendLeadToSheet(lead){
+    if(!SHEET_URL) return;
+    try {
+      fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(lead)
+      }).catch(function(){});
+    } catch(e){}
+  }
 
   /* Todos os botões chamam isto: agora abre o formulário ANTES do WhatsApp */
   function openWhats(origem){
@@ -5464,11 +5478,22 @@
       }
       err.hidden = true;
 
+      var lead = {
+        nome:     nome.value.trim(),
+        telefone: tel.value.trim(),
+        email:    mail.value.trim(),
+        origem:   leadOrigem
+      };
+
+      /* 1) grava o lead na Planilha Google */
+      sendLeadToSheet(lead);
+
+      /* 2) segue para o WhatsApp com os dados preenchidos */
       var texto = 'Olá! Quero garantir minha vaga no Método Impulsione (Corretores).\n\n'
-        + 'Nome: '     + nome.value.trim() + '\n'
-        + 'WhatsApp: ' + tel.value.trim()  + '\n'
-        + 'E-mail: '   + mail.value.trim() + '\n'
-        + 'Origem: '   + leadOrigem;
+        + 'Nome: '     + lead.nome     + '\n'
+        + 'WhatsApp: ' + lead.telefone + '\n'
+        + 'E-mail: '   + lead.email    + '\n'
+        + 'Origem: '   + lead.origem;
       var url = 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(texto);
 
       closeLeadModal();

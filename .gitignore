@@ -4,6 +4,10 @@
 # Config local do Claude Code
 .claude/settings.local.json
 
+# Segredos (NUNCA versionar)
+.claude/netlify-token.txt
+*.token
+
 # Rascunhos de construção do site
 _ref_index.html
 impulsione_head.part
