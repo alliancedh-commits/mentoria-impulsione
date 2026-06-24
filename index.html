@@ -4667,6 +4667,60 @@
     </div>
   </div>
 
+  <!-- ════════ CARROSSEL DE FOTOS DAS TURMAS ════════ -->
+  <style>
+    .turmas-section { background: var(--dark2); padding: 64px 0 68px; overflow: hidden; }
+    .turmas-section .eyebrow { color: var(--amber); }
+    .turmas-marquee {
+      margin-top: 34px; overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+              mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+    }
+    .turmas-track {
+      display: flex; width: max-content;
+      animation: turmasScroll 45s linear infinite;
+    }
+    .turmas-marquee:hover .turmas-track { animation-play-state: paused; }
+    .turmas-track img {
+      height: 270px; width: auto; flex: 0 0 auto; margin-right: 18px;
+      border-radius: 14px; object-fit: cover;
+      border: 1px solid rgba(205,152,106,.28);
+      box-shadow: 0 12px 34px rgba(0,0,0,.4);
+    }
+    @keyframes turmasScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (max-width: 640px){
+      .turmas-section { padding: 48px 0 52px; }
+      .turmas-track img { height: 188px; margin-right: 12px; border-radius: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .turmas-track { animation: none; }
+      .turmas-marquee { overflow-x: auto; }
+    }
+  </style>
+  <section class="turmas-section">
+    <div class="container--wide">
+      <p class="eyebrow text-center">Registros reais</p>
+      <h2 class="section-title text-center">As turmas <span>Impulsione</span> na prática</h2>
+      <p class="section-sub text-center" style="margin:0 auto">Veja como é a dinâmica dos encontros — pessoas reais construindo negócios de verdade.</p>
+    </div>
+    <div class="turmas-marquee" role="region" aria-label="Fotos das turmas do Método Impulsione">
+      <div class="turmas-track">
+        <img src="assets/fotos/mentoria-1.jpg" alt="Turma do Método Impulsione reunida no encontro presencial" decoding="async"/>
+        <img src="assets/fotos/mentoria-2.jpg" alt="Participantes da mentoria Impulsione" decoding="async"/>
+        <img src="assets/fotos/mentoria-3.jpg" alt="Encontro presencial da mentoria Impulsione" decoding="async"/>
+        <img src="assets/fotos/mentoria-4.jpg" alt="Turma de corretores na mentoria Impulsione" decoding="async"/>
+        <img src="assets/fotos/mentoria-5.jpg" alt="Grupo da mentoria Impulsione" decoding="async"/>
+        <img src="assets/fotos/mentoria-6.jpg" alt="Encontro do Método Impulsione" decoding="async"/>
+        <img src="assets/fotos/mentoria-1.jpg" alt="" aria-hidden="true" decoding="async"/>
+        <img src="assets/fotos/mentoria-2.jpg" alt="" aria-hidden="true" decoding="async"/>
+        <img src="assets/fotos/mentoria-3.jpg" alt="" aria-hidden="true" decoding="async"/>
+        <img src="assets/fotos/mentoria-4.jpg" alt="" aria-hidden="true" decoding="async"/>
+        <img src="assets/fotos/mentoria-5.jpg" alt="" aria-hidden="true" decoding="async"/>
+        <img src="assets/fotos/mentoria-6.jpg" alt="" aria-hidden="true" decoding="async"/>
+      </div>
+    </div>
+  </section>
+
   <!-- PAIN / DIAGNÓSTICO -->
   <section class="pain-section">
     <div class="container">

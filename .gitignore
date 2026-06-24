@@ -19,3 +19,9 @@ impulsione_body.part
 *.jpg
 *.jpeg
 *.png
+*.heic
+*.HEIC
+*.heif
+
+# Exceção: fotos do carrossel das turmas (fazem parte do site publicado)
+!assets/fotos/*.jpg
