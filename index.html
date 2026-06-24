@@ -64,9 +64,9 @@
     .btn--primary:hover { box-shadow: 0 8px 36px rgba(205,152,106,.55); }
     /* CTA secundario (escapatoria pro quest gamificado / cupom) */
     .btn--ghost {
-      background: transparent; color: var(--light);
-      font-size: .85rem; padding: 10px 18px;
-      border: 1px solid rgba(205,152,106,.35);
+      background: rgba(205,152,106,.10); color: var(--light);
+      font-size: .85rem; padding: 12px 20px;
+      border: 1.5px solid var(--amber);
       letter-spacing: .04em;
       text-transform: none;
       box-shadow: none;
@@ -109,7 +109,7 @@
     }
     .section-title span { color: var(--yellow); }
     .section-sub {
-      font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.7; color: #b9a79d; max-width: 700px;
+      font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.7; color: #d9ccc3; max-width: 700px;
     }
 
     /* ─── TOP BAR ───────────────────────────────────────── */
@@ -1011,7 +1011,7 @@
     .exit-header h2 span { color: var(--yellow); }
     .exit-header p {
       font-family: var(--font-b);
-      color: #b9a79d;
+      color: #d9ccc3;
       font-size: .95rem;
       line-height: 1.5;
     }
@@ -1213,7 +1213,7 @@
     .exit-form-instr {
       text-align: center;
       font-family: var(--font-b);
-      color: #b9a79d;
+      color: #d9ccc3;
       font-size: .92rem;
       margin-bottom: 18px;
     }
@@ -1493,6 +1493,25 @@
       margin-bottom: 28px; max-width: 600px; font-weight: 400;
     }
     .hero__sub strong { color: var(--amber); font-weight: 700; }
+    .hero__sub-list {
+      list-style: none; padding: 0; margin: 0 0 18px;
+      display: flex; flex-wrap: wrap; gap: 10px 22px;
+    }
+    .hero__sub-list li {
+      font-family: var(--font-s); font-weight: 700; color: var(--amber);
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      display: flex; align-items: center; gap: 8px; line-height: 1.2;
+    }
+    .hero__sub-list li::before { content: "✓"; color: var(--yellow); font-weight: 900; }
+    .hero__sub-tail {
+      font-size: clamp(.95rem, 1.6vw, 1.12rem); line-height: 1.6;
+      color: var(--light); max-width: 560px;
+    }
+    .hero__sub-tail strong { color: var(--amber); font-weight: 700; }
+    .hero:has(.book-mockup:hover) .hero__sub-list li,
+    .hero:has(.book-mockup:hover) .hero__sub-list li::before,
+    .hero:has(.book-mockup:hover) .hero__sub-tail,
+    .hero:has(.book-mockup:hover) .hero__sub-tail strong { color: var(--dark); }
     .hero__price-box {
       background: rgba(0,0,0,.55); border: 1px solid rgba(205,152,106,.45);
       border-radius: var(--radius);
@@ -1528,7 +1547,7 @@
     .hero__price-val {
       font-family: var(--font-h); font-weight: 800;
       font-size: clamp(3.4rem, 9vw, 4.4rem);
-      color: var(--yellow);
+      color: var(--light);
       line-height: .95;
       text-align: left;
       letter-spacing: -.02em;
@@ -1542,8 +1561,13 @@
       opacity: .9;
     }
     .hero__price-note {
-      font-size: .82rem; color: #888;
+      font-size: .82rem; color: #cdbcb2;
       margin-top: 14px; text-align: left; line-height: 1.45;
+    }
+    .badge-limited {
+      display: inline-block; background: var(--yellow); color: var(--burgundy);
+      font-weight: 800; text-transform: uppercase; letter-spacing: .04em;
+      font-size: .72em; padding: 2px 10px; border-radius: 100px; white-space: nowrap;
     }
     .hero__includes {
       list-style: none; padding: 14px 0 0;
@@ -1564,7 +1588,7 @@
     @media (max-width: 480px) {
       .hero__includes { grid-template-columns: 1fr; gap: 6px; }
     }
-    .hero__cta-note { font-size: .75rem; color: #777; margin-top: 10px; }
+    .hero__cta-note { font-size: .75rem; color: #cdbcb2; margin-top: 10px; }
 
 
     /* ─── SECTION: WOLF / PAIN ──────────────────────────── */
@@ -1995,7 +2019,7 @@
       font-family: var(--font-h);
       font-size: 2.2rem;
       font-weight: 800;
-      color: rgba(205,152,106,.08);
+      color: rgba(205,152,106,.22);
       line-height: 1;
       pointer-events: none;
       transition: color .3s ease, transform .3s ease;
@@ -2008,7 +2032,7 @@
       box-shadow: 0 10px 30px rgba(0,0,0,.4), -4px 0 0 0 var(--yellow);
     }
     .pain-list li:hover::before {
-      color: rgba(205,152,106,.25);
+      color: rgba(205,152,106,.45);
       transform: scale(1.08);
     }
     .pain-list li .ico {
@@ -2376,10 +2400,10 @@
       width: 40px; height: 40px;
       margin: 0 auto 12px;
       border-radius: 12px;
-      background: linear-gradient(135deg, rgba(205,152,106,.28), rgba(205,152,106,.06));
-      border: 1px solid rgba(205,152,106,.4);
+      background: linear-gradient(135deg, var(--yellow), #a86f3f);
+      border: 1px solid var(--yellow);
       display: flex; align-items: center; justify-content: center;
-      color: var(--yellow);
+      color: var(--burgundy);
       box-shadow: 0 4px 14px rgba(205,152,106,.15);
       transition: transform .35s ease;
     }
@@ -2419,7 +2443,7 @@
     .qs-stat__lbl {
       font-family: var(--font-s);
       font-size: .78rem;
-      color: #b9a79d;
+      color: #d9ccc3;
       margin-top: 10px;
       line-height: 1.4;
       text-transform: uppercase;
@@ -2461,7 +2485,7 @@
       background: rgba(255,255,255,.04); border: 1px solid rgba(205,152,106,.3);
       border-radius: var(--radius); padding: 24px; margin-top: 24px;
     }
-    .solution-card p { font-size: 1rem; line-height: 1.75; color: #c2b1a7; }
+    .solution-card p { font-size: 1rem; line-height: 1.75; color: #d6c7bd; }
     .solution-card p strong { color: var(--yellow); }
 
     /* ─── SECTION: MODULES ──────────────────────────────── */
@@ -2609,7 +2633,7 @@
       color: #fff; margin-bottom: 6px; letter-spacing: .02em;
     }
     .include-card__text {
-      font-size: .85rem; color: #888; line-height: 1.6;
+      font-size: .85rem; color: #d9ccc3; line-height: 1.6;
     }
 
     /* ─── SECTION: FOR WHO ──────────────────────────────── */
@@ -3113,7 +3137,7 @@
     }
     .offer-items li {
       display: flex; align-items: center; gap: 12px;
-      font-size: 1.05rem; color: #c2b1a7; padding: 10px 0;
+      font-size: 1.05rem; color: #d6c7bd; padding: 10px 0;
       border-bottom: 1px solid rgba(255,255,255,.05);
     }
     .offer-items li:last-child { border-bottom: none; }
@@ -3829,7 +3853,7 @@
     .oe-platform__title span { color: var(--yellow); }
     .oe-platform__sub {
       font-size: clamp(.95rem, 2vw, 1.05rem);
-      color: #c2b1a7; max-width: 680px; margin: 0 auto;
+      color: #d6c7bd; max-width: 680px; margin: 0 auto;
       line-height: 1.6;
     }
 
@@ -4084,7 +4108,7 @@
     }
     .delivery-icon { margin-bottom: 18px; }
     .delivery-title { font-family: var(--font-h); font-weight: 700; font-size: clamp(1.6rem, 3.5vw, 2.4rem); color: var(--yellow); margin-bottom: 12px; letter-spacing: .02em; }
-    .delivery-sub { font-size: 1rem; color: #c2b1a7; max-width: 520px; margin: 0 auto; line-height: 1.65; }
+    .delivery-sub { font-size: 1rem; color: #d6c7bd; max-width: 520px; margin: 0 auto; line-height: 1.65; }
     .access-steps {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 18px; margin-top: 36px;
@@ -4103,7 +4127,7 @@
     ══════════════════════════════════════════════════════ */
     .qual-hero { background: linear-gradient(160deg, #231318, #1d0f13); padding: 56px 0; text-align: center; }
     .qual-hero__title { font-family: var(--font-h); font-weight: 700; font-size: clamp(1.5rem, 3vw, 2.2rem); color: var(--yellow); margin-bottom: 10px; letter-spacing: .02em; text-transform: uppercase; }
-    .qual-hero__sub { font-size: .98rem; color: #c2b1a7; max-width: 520px; margin: 0 auto; line-height: 1.65; }
+    .qual-hero__sub { font-size: .98rem; color: #d6c7bd; max-width: 520px; margin: 0 auto; line-height: 1.65; }
     .qual-form { max-width: 620px; margin: 0 auto; padding: 44px 0; }
     .qual-question { background: rgba(255,255,255,.03); border: 1px solid rgba(205,152,106,.18); border-radius: var(--radius); padding: 26px; margin-bottom: 18px; }
     .qual-question__lbl { font-family: var(--font-s); font-weight: 700; font-size: .97rem; color: var(--light); margin-bottom: 16px; line-height: 1.45; }
@@ -4127,7 +4151,7 @@
       transform: translate(-50%,-50%); width: 6px; height: 6px;
       background: var(--burgundy); border-radius: 50%;
     }
-    .qual-opt__text { font-size: .88rem; color: #b9a79d; }
+    .qual-opt__text { font-size: .88rem; color: #d9ccc3; }
 
     /* ══════════════════════════════════════════════════════
        PAGE 5 - SCHEDULING
@@ -4183,7 +4207,7 @@
     }
     .thanks-icon { margin-bottom: 18px; }
     .thanks-title { font-family: var(--font-h); font-weight: 700; font-size: clamp(1.6rem, 3.5vw, 2.4rem); color: var(--yellow); margin-bottom: 12px; letter-spacing: .02em; text-transform: uppercase; }
-    .thanks-text { font-size: .97rem; color: #b9a79d; line-height: 1.7; max-width: 500px; margin: 0 auto 28px; }
+    .thanks-text { font-size: .97rem; color: #d9ccc3; line-height: 1.7; max-width: 500px; margin: 0 auto 28px; }
 
     /* ─── ANIMATIONS ────────────────────────────────────── */
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.65} }
@@ -4456,7 +4480,7 @@
     font-family:var(--font-h); font-weight:700; font-size:2.7rem; line-height:1;
     color:rgba(205,152,106,.92); position:relative; z-index:1;
   }
-  .module-card__visual .ico{ position:relative; z-index:1; }
+  .module-card__visual .ico{ position:relative; z-index:1; width:3.1rem; height:3.1rem; }
   .module-card__tag{
     display:inline-block; margin-bottom:6px; font-family:var(--font-s);
     font-size:.62rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase;
@@ -4522,7 +4546,6 @@
     .hero-banner{ width:100%; background:#231318; line-height:0; }
     .hero-banner img{
       width:100%; height:auto; display:block;
-      max-height:100vh; object-fit:cover; object-position:center top;
     }
   </style>
   <section class="hero-banner">
@@ -4593,7 +4616,7 @@
               <li>✓ Diagnóstico individual do seu negócio</li>
               <li>✓ Acompanhamento próximo até a execução</li>
             </ul>
-            <div class="hero__price-note">Turma de lançamento · vagas limitadas</div>
+            <div class="hero__price-note">Turma de lançamento · <span class="badge-limited">vagas limitadas</span></div>
           </div>
 
           <div class="cta-stack">
@@ -4615,12 +4638,14 @@
             e Construa um Negócio<br/>
             Imobiliário Previsível
           </h1>
-          <p class="hero__sub">
-            <strong>
-              Organização, estratégia e previsibilidade<br/>
-              aplicadas ao negócio do corretor,<br/>
-              do diagnóstico à execução.
-            </strong>
+          <ul class="hero__sub-list">
+            <li>Organização</li>
+            <li>Estratégia</li>
+            <li>Previsibilidade</li>
+          </ul>
+          <p class="hero__sub-tail">
+            Tudo isso aplicado ao seu negócio como corretor,
+            <strong>do diagnóstico à execução.</strong>
           </p>
         </div><!-- /.hero__content -->
 
@@ -4781,9 +4806,9 @@
           </h2>
           <div class="solution-card">
             <p>
-              A maioria dos corretores trabalha muito, mas <strong>sem estrutura</strong>: depende de portais, vende só quando aparece oportunidade e vive no improviso.
+              A maioria dos corretores trabalha muito, mas <strong>sem estrutura</strong> — vive de portais e do improviso.
               <br/><br/>
-              O Método Impulsione organiza o seu negócio passo a passo, com <strong>rotina, processos, finanças, captação de clientes e posicionamento</strong>, para você crescer com organização e previsibilidade.
+              O Método Impulsione organiza seu negócio passo a passo: <strong>rotina, processos, finanças, clientes e posicionamento</strong>. Crescimento com previsibilidade.
             </p>
           </div>
           <br/>
@@ -4803,9 +4828,9 @@
   <!-- MODULES (6) -->
   <section class="modules-section">
     <div class="container">
-      <p class="eyebrow text-center" style="color:var(--burgundy)">O que está dentro</p>
+      <p class="eyebrow text-center" style="color:var(--burgundy)">O conteúdo da mentoria</p>
       <h2 class="section-title text-center" style="color:var(--dark)">
-        6 Módulos <span style="color:var(--burgundy)">Que Estruturam o Seu Negócio</span>
+        6 Módulos <span style="color:var(--burgundy);font-weight:400">Que Estruturam o Seu Negócio</span>
       </h2>
       <div class="modules-grid">
         <div class="module-card">
@@ -4839,7 +4864,7 @@
   <!-- INCLUDES -->
   <section class="includes-section">
     <div class="container">
-      <p class="eyebrow text-center">O que você recebe</p>
+      <p class="eyebrow text-center">Material do aluno</p>
       <h2 class="section-title text-center">Não é só conteúdo. É <span>estrutura aplicada</span></h2>
       <p class="includes-subtitle">Tudo que você precisa para profissionalizar a forma como vende e capta clientes</p>
 
@@ -5326,6 +5351,24 @@
   .solution-title__big em{ font-style:normal; color:var(--yellow); }
 </style>
 
+<style>
+  /* Fix (pág.7 feedback): evita a caixa "AGUARDANDO SEU CLIQUE" e o balão "CLIQUE NAS DORES"
+     sobreporem os cards de dores em telas <=768px. Coloca tudo em fluxo normal. */
+  @media (max-width: 768px){
+    .pain-hint{
+      position: static !important; top: auto !important; transform: none !important;
+      margin: 4px auto 18px !important;
+    }
+    .pain-diagnosis{
+      position: static !important;
+      inset: auto !important; left: auto !important; right: auto !important;
+      bottom: auto !important; top: auto !important;
+      width: auto !important; max-width: 100% !important;
+      margin: 0 0 18px !important;
+    }
+    .pain-wolf, .pain-wolf--no-img{ position: static !important; min-height: 0 !important; }
+  }
+</style>
 <!-- ════════ MODAL DE CAPTAÇÃO DE LEAD ════════ -->
 <style>
   .lead-modal{ position:fixed; inset:0; z-index:99999; display:none; align-items:center; justify-content:center; padding:20px; }
@@ -5343,7 +5386,7 @@
   .lead-modal__close:hover{ opacity:1; }
   .lead-modal__eyebrow{ font-family:var(--font-s); font-weight:700; font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:var(--amber); margin-bottom:8px; }
   .lead-modal__title{ font-family:var(--font-h); font-weight:700; font-size:1.7rem; line-height:1.15; color:var(--light); margin-bottom:6px; }
-  .lead-modal__sub{ font-size:.95rem; color:#b9a79d; margin-bottom:22px; line-height:1.5; }
+  .lead-modal__sub{ font-size:.95rem; color:#d9ccc3; margin-bottom:22px; line-height:1.5; }
   .lead-form{ display:flex; flex-direction:column; gap:14px; }
   .lead-field{ display:flex; flex-direction:column; gap:6px; text-align:left; }
   .lead-field span{ font-size:.8rem; font-weight:600; color:var(--light); letter-spacing:.02em; }
