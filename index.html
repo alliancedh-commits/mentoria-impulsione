@@ -4647,6 +4647,7 @@
             Tudo isso aplicado ao seu negócio como corretor,
             <strong>do diagnóstico à execução.</strong>
           </p>
+          <button class="btn btn--primary btn--block hero__mobile-cta pulsing" onclick="openWhats('hero_mobile')" data-cta="hero_mobile_vaga">QUERO GARANTIR MINHA VAGA →</button>
         </div><!-- /.hero__content -->
 
       </div><!-- /.hero__row -->
@@ -5552,6 +5553,10 @@
   .pain-meter__track { height:10px; border-radius:100px; background:rgba(255,255,255,.08); border:1px solid rgba(205,152,106,.22); overflow:hidden; }
   .pain-meter__fill { height:100%; width:0%; border-radius:100px; background:linear-gradient(90deg,#d9a866,#a85f1f 55%,#5a2f17); transition:width .45s cubic-bezier(.4,0,.2,1); }
   .pain-meter__level { margin-top:8px; font-family:var(--font-s); font-weight:700; font-size:.86rem; color:var(--amber); }
+
+  /* CTA extra acima da dobra — só no mobile */
+  .hero__mobile-cta { display: none; }
+  @media (max-width: 768px){ .hero__mobile-cta { display: block; margin-top: 18px; } }
 </style>
 <!-- ════════ ASSISTENTE FLUTUANTE (atalhos) ════════ -->
 <style>
