@@ -56,25 +56,25 @@
     .btn:hover  { transform: translateY(-2px); filter: brightness(1.08); }
     .btn:active { transform: translateY(0); }
     .btn--primary {
-      background: var(--yellow); color: var(--burgundy);
-      font-size: 1.1rem; padding: 20px 44px;
-      box-shadow: 0 6px 28px rgba(205,152,106,.35);
+      background: #16a34a; color: #ffffff;
+      font-size: 1.12rem; padding: 20px 44px;
+      box-shadow: 0 6px 28px rgba(22,163,74,.45);
       text-transform: uppercase; letter-spacing: .04em;
     }
-    .btn--primary:hover { box-shadow: 0 8px 36px rgba(205,152,106,.55); }
+    .btn--primary:hover { background: #1bb557; box-shadow: 0 10px 38px rgba(22,163,74,.6); }
     /* CTA secundario (escapatoria pro quest gamificado / cupom) */
     .btn--ghost {
-      background: rgba(205,152,106,.10); color: var(--light);
-      font-size: .85rem; padding: 12px 20px;
-      border: 1.5px solid var(--amber);
+      background: rgba(22,163,74,.10); color: var(--light);
+      font-size: .92rem; padding: 12px 20px;
+      border: 1.5px solid #16a34a;
       letter-spacing: .04em;
       text-transform: none;
       box-shadow: none;
     }
     .btn--ghost:hover {
-      background: rgba(205,152,106,.08);
-      border-color: var(--yellow);
-      color: var(--yellow);
+      background: rgba(22,163,74,.14);
+      border-color: #1bb557;
+      color: #ffffff;
     }
     .cta-stack {
       display: flex; flex-direction: column; align-items: stretch;
@@ -5281,10 +5281,10 @@
       </div>
 
       <div class="cta-stack">
-        <button class="btn btn--primary solution-section__cta" style="background:#231318;color:#cd986a;border:2px solid #231318;" onclick="openWhats('final')" data-cta="final_vaga">
+        <button class="btn btn--primary solution-section__cta" style="background:#16a34a;color:#ffffff;border:2px solid #16a34a;" onclick="openWhats('final')" data-cta="final_vaga">
           SIM, QUERO GARANTIR MINHA VAGA →
         </button>
-        <button class="btn btn--ghost" onclick="openWhats('final_duvida')" data-cta="final_duvida" style="border-color:rgba(35,19,24,.3);color:rgba(35,19,24,.85);">
+        <button class="btn btn--ghost" onclick="openWhats('final_duvida')" data-cta="final_duvida" style="border-color:#16a34a;color:#15803d;background:rgba(22,163,74,.08);">
           💬 Falar com a equipe no WhatsApp
         </button>
       </div>
@@ -5422,6 +5422,22 @@
     }
     .pain-wolf, .pain-wolf--no-img{ position: static !important; min-height: 0 !important; }
   }
+</style>
+<style>
+  /* Legibilidade (feedback): aumenta os textos pequenos de leitura */
+  .section-sub        { font-size: clamp(1.05rem, 1.6vw, 1.22rem) !important; line-height: 1.7 !important; }
+  .include-card__text { font-size: 1rem !important; line-height: 1.6 !important; }
+  .module-card__caption { font-size: .98rem !important; line-height: 1.5 !important; }
+  .includes-subtitle  { font-size: 1.08rem !important; line-height: 1.6 !important; }
+  .pain-section__sub  { font-size: 1.05rem !important; line-height: 1.6 !important; }
+  .pain-list li p     { font-size: 1rem !important; line-height: 1.55 !important; }
+  .faq-q              { font-size: 1.05rem !important; }
+  .faq-a              { font-size: 1rem !important; line-height: 1.65 !important; }
+  .qs-stat__lbl       { font-size: .95rem !important; }
+  .hero__includes li  { font-size: .98rem !important; }
+  .hero__cta-note     { font-size: .9rem !important; }
+  .hero__price-note   { font-size: .95rem !important; }
+  .hero__sub-tail     { font-size: clamp(1.05rem, 1.7vw, 1.18rem) !important; }
 </style>
 <!-- ════════ MODAL DE CAPTAÇÃO DE LEAD ════════ -->
 <style>
