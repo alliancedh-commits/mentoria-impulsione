@@ -1985,8 +1985,8 @@
     .pain-list li.is-selected .ico svg { color: var(--risk-color); }
     .pain-list li .pain-check {
       width: 26px; height: 26px;
-      border-radius: 50%;
-      border: 2px solid rgba(205,152,106,.4);
+      border-radius: 6px;
+      border: 2px solid rgba(205,152,106,.55);
       background: transparent;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
@@ -4736,6 +4736,11 @@
               <span id="painDiagTitle">Aguardando seu clique…</span>
             </div>
             <div class="pain-diagnosis__desc" id="painDiagDesc">Descubra <strong>o que realmente trava o seu crescimento</strong>, não é falta de esforço.</div>
+            <div class="pain-meter">
+              <div class="pain-meter__labels"><span>Sob controle</span><span>Crítico</span></div>
+              <div class="pain-meter__track"><div class="pain-meter__fill" id="painMeterFill"></div></div>
+              <div class="pain-meter__level" id="painMeterLevel">Selecione o que você sente</div>
+            </div>
           </div>
         </div>
         <div>
@@ -5438,6 +5443,13 @@
   .hero__cta-note     { font-size: .9rem !important; }
   .hero__price-note   { font-size: .95rem !important; }
   .hero__sub-tail     { font-size: clamp(1.05rem, 1.7vw, 1.18rem) !important; }
+
+  /* Régua de nível das dores (tons de marrom) */
+  .pain-meter { margin-top: 16px; }
+  .pain-meter__labels { display:flex; justify-content:space-between; font-family:var(--font-s); font-size:.72rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#cdbcb2; margin-bottom:6px; }
+  .pain-meter__track { height:10px; border-radius:100px; background:rgba(255,255,255,.08); border:1px solid rgba(205,152,106,.22); overflow:hidden; }
+  .pain-meter__fill { height:100%; width:0%; border-radius:100px; background:linear-gradient(90deg,#d9a866,#a85f1f 55%,#5a2f17); transition:width .45s cubic-bezier(.4,0,.2,1); }
+  .pain-meter__level { margin-top:8px; font-family:var(--font-s); font-weight:700; font-size:.86rem; color:var(--amber); }
 </style>
 <!-- ════════ MODAL DE CAPTAÇÃO DE LEAD ════════ -->
 <style>
@@ -5656,18 +5668,21 @@
     var list = document.getElementById('painList');
     if(!list) return;
     var items = list.querySelectorAll('li[data-pain]');
+    var meterLevels = ['Selecione o que você sente','Atenção: alguns sinais','Sinal de alerta','Situação preocupante','Urgente: estruture com método'];
     function refresh(){
-      var n = list.querySelectorAll('li.selected').length;
+      var n = list.querySelectorAll('li.is-selected').length;
       var c1=document.getElementById('painCount'); if(c1)c1.textContent=n;
       var c2=document.getElementById('painCountMirror'); if(c2)c2.textContent=n;
       var t=document.getElementById('painDiagTitle'); if(t)t.textContent=titles[Math.min(n,4)];
       var dd=document.getElementById('painDiagDesc'); if(dd)dd.innerHTML=descs[Math.min(n,4)];
+      var fill=document.getElementById('painMeterFill'); if(fill) fill.style.width=(Math.min(n,4)/4*100)+'%';
+      var lvl=document.getElementById('painMeterLevel'); if(lvl) lvl.textContent=meterLevels[Math.min(n,4)];
       var hand=document.getElementById('painTapHand'); if(hand && n>0) hand.style.display='none';
     }
     items.forEach(function(li){
       function toggle(){
-        li.classList.toggle('selected');
-        li.setAttribute('aria-pressed', li.classList.contains('selected'));
+        li.classList.toggle('is-selected');
+        li.setAttribute('aria-pressed', li.classList.contains('is-selected'));
         refresh();
       }
       li.addEventListener('click', toggle);
