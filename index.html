@@ -5451,6 +5451,79 @@
   .pain-meter__fill { height:100%; width:0%; border-radius:100px; background:linear-gradient(90deg,#d9a866,#a85f1f 55%,#5a2f17); transition:width .45s cubic-bezier(.4,0,.2,1); }
   .pain-meter__level { margin-top:8px; font-family:var(--font-s); font-weight:700; font-size:.86rem; color:var(--amber); }
 </style>
+<!-- ════════ ASSISTENTE FLUTUANTE (atalhos) ════════ -->
+<style>
+  .fab-assist { position: fixed; right: 20px; bottom: 20px; z-index: 9500; font-family: var(--font-s); }
+  .fab-assist__btn {
+    width: 62px; height: 62px; border-radius: 50%; border: none; cursor: pointer;
+    background: #16a34a; color: #fff; box-shadow: 0 10px 30px rgba(22,163,74,.5);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform .2s, box-shadow .2s; position: relative;
+  }
+  .fab-assist__btn:hover { transform: translateY(-3px) scale(1.05); }
+  .fab-assist__btn svg { width: 30px; height: 30px; }
+  .fab-assist__btn::after {
+    content: ''; position: absolute; inset: -4px; border-radius: 50%;
+    border: 2px solid rgba(22,163,74,.55); animation: fabPulse 2.2s ease-out infinite;
+  }
+  @keyframes fabPulse { 0%{ transform:scale(1); opacity:.7 } 100%{ transform:scale(1.5); opacity:0 } }
+  .fab-assist.is-open .fab-assist__btn::after { display:none; }
+  .fab-panel {
+    position: absolute; right: 0; bottom: 76px; width: 300px; max-width: 82vw;
+    background: var(--mid); border: 1px solid rgba(205,152,106,.35); border-radius: 16px;
+    box-shadow: 0 24px 60px rgba(0,0,0,.5); padding: 18px; opacity: 0; visibility: hidden;
+    transform: translateY(12px) scale(.97); transform-origin: bottom right;
+    transition: opacity .2s, transform .2s, visibility .2s;
+  }
+  .fab-assist.is-open .fab-panel { opacity: 1 !important; visibility: visible !important; transform: translateY(0) scale(1) !important; }
+  .fab-panel__head { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+  .fab-panel__avatar { width:38px; height:38px; border-radius:50%; background:linear-gradient(135deg,#16a34a,#0f7a37); display:flex; align-items:center; justify-content:center; color:#fff; flex-shrink:0; }
+  .fab-panel__avatar svg { width:20px; height:20px; }
+  .fab-panel__title { font-weight:800; color:var(--light); font-size:1rem; line-height:1.2; }
+  .fab-panel__sub { font-size:.84rem; color:#cdbcb2; margin:2px 0 14px; line-height:1.45; }
+  .fab-opt {
+    display:flex; align-items:center; gap:10px; width:100%; text-align:left; cursor:pointer;
+    background: rgba(255,255,255,.04); border:1px solid rgba(205,152,106,.2); color:var(--light);
+    border-radius:10px; padding:12px 13px; font-family:var(--font-b); font-size:.92rem; font-weight:600;
+    margin-bottom:8px; transition:background .15s, border-color .15s, transform .12s;
+  }
+  .fab-opt:hover { background: rgba(22,163,74,.12); border-color:#16a34a; transform:translateX(2px); }
+  .fab-opt--primary { background:#16a34a; border-color:#16a34a; color:#fff; font-weight:800; }
+  .fab-opt--primary:hover { background:#1bb557; }
+  .fab-opt .emoji { font-size:1.05rem; }
+  .fab-close { position:absolute; top:8px; right:12px; background:none; border:none; color:#cdbcb2; font-size:1.3rem; cursor:pointer; line-height:1; }
+  @media (max-width:640px){ .fab-assist{ right:14px; bottom:14px; } .fab-assist__btn{ width:56px; height:56px; } }
+</style>
+<div class="fab-assist" id="fabAssist">
+  <div class="fab-panel" role="dialog" aria-label="Assistente Impulsione">
+    <button class="fab-close" type="button" onclick="toggleFab(false)" aria-label="Fechar">&times;</button>
+    <div class="fab-panel__head">
+      <span class="fab-panel__avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+      <div class="fab-panel__title">Posso te ajudar?</div>
+    </div>
+    <p class="fab-panel__sub">Escolha uma opção e fale com a equipe Impulsione:</p>
+    <button class="fab-opt fab-opt--primary" type="button" onclick="fabAction('vaga')"><span class="emoji">🎯</span> Quero garantir minha vaga</button>
+    <button class="fab-opt" type="button" onclick="fabAction('duvida')"><span class="emoji">💬</span> Tirar uma dúvida no WhatsApp</button>
+    <button class="fab-opt" type="button" onclick="fabAction('faq')"><span class="emoji">❓</span> Ver perguntas frequentes</button>
+  </div>
+  <button class="fab-assist__btn" type="button" onclick="toggleFab()" aria-label="Abrir assistente virtual">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </button>
+</div>
+<script>
+  function toggleFab(force){
+    var el=document.getElementById('fabAssist'); if(!el) return;
+    var open=(typeof force==='boolean')?force:!el.classList.contains('is-open');
+    el.classList.toggle('is-open', open);
+  }
+  function fabAction(kind){
+    toggleFab(false);
+    if(kind==='faq'){ var f=document.querySelector('.faq-section'); if(f) f.scrollIntoView({behavior:'smooth'}); return; }
+    if(typeof openWhats==='function'){ openWhats('assistente_'+kind); }
+  }
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') toggleFab(false); });
+</script>
+
 <!-- ════════ MODAL DE CAPTAÇÃO DE LEAD ════════ -->
 <style>
   .lead-modal{ position:fixed; inset:0; z-index:99999; display:none; align-items:center; justify-content:center; padding:20px; }
